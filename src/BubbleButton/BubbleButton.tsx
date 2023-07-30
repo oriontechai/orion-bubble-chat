@@ -6,9 +6,11 @@ interface BubbleButtonProps{
     isChatOpened: boolean;
     openChat: () => void;
     sendMessage: () => void;
+    lightColor: string; 
+    darkColor: string;
 }
 
-const BubbleButton = ({ isChatOpened, openChat, sendMessage } : BubbleButtonProps) => {
+const BubbleButton = ({ isChatOpened, openChat, sendMessage, lightColor, darkColor } : BubbleButtonProps) => {
     const handleButtonClick = () => {
         if(isChatOpened){
             sendMessage();
@@ -16,8 +18,9 @@ const BubbleButton = ({ isChatOpened, openChat, sendMessage } : BubbleButtonProp
             openChat();
         }
     }
+
     return(
-        <Button onClick={handleButtonClick}>
+        <Button onClick={handleButtonClick} lightColor={lightColor} darkColor={darkColor}>
             { isChatOpened ? 
                 <MdSend color="white" size={25}/> :
                 <TbMessageCircle color="white" size={35}/>
